@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+<h1>Contacts</h1>
+<body>
+{% block first %}
+<table border="2">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Actions</th>
+</tr>
+{% for contact in object_list %}
+<tr>
+<td>{{contact.name}}</td>
+<td>{{contact.email}}</td>
+<td>{{contact.address}}</td>
+<td>{{contact.phone}}</td>
+<td>
+<a  href='{% url "contact_detail"  contact.id  %}'><button>details</button></a>
+<a  href='{% url "contact_update"  contact.id  %}'><button>edit</button></a>
+<a  href='{% url "contact_delete"  contact.id  %}'><button>delete</button></a>
+</td>
+</tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+<br><br><br>
+<a  href='{% url "contact_create" %}'><button>Add Contacts</button></a>
+<a  href='{% url "contact_list" %}'><button>Show Contacts</button></a>
+{% block content %}
+{% endblock %}
+</body>
+</html>
